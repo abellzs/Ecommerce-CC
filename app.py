@@ -5,15 +5,21 @@ from datetime import datetime
 import boto3
 import uuid
 import requests  # Tambahkan import untuk library requests
-import pymysql
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
+
+
+# Load environment variables from .env file
+load_dotenv()
+
 # Konfigurasi AWS S3
-AWS_REGION = 'ap-southeast-1'
-AWS_ACCESS_KEY_ID = 'AKIA5WLTTCLN2RXU2NNE'
-AWS_SECRET_ACCESS_KEY = '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'
-S3_BUCKET_NAME = 'ecomm-productmage'
+AWS_REGION = os.getenv('AWS_REGION')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 s3 = boto3.client(
     's3',
@@ -26,15 +32,14 @@ s3 = boto3.client(
 def get_db_connection():
     try:
         connection = pymysql.connect(
-            host='ecommerce-db.c184y2ims2do.ap-southeast-2.rds.amazonaws.com',
-            user='adminecomm',
-            password='Admin123',
-            database='ecommerce'
+            host=os.getenv('DB_HOST'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            database=os.getenv('DB_NAME')
         )
         return connection
     except Exception as e:
-        print(f"Error koneksi database: {e}")
-        return None
+        print(f"Error connecting to the database: {e}")
 
 # Route untuk halaman utama
 @app.route('/')
@@ -1078,4 +1083,4 @@ def delete_product(id):
         return f"<h1>Error</h1><p>{str(e)}</p>"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
