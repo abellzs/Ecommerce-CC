@@ -1083,4 +1083,4 @@ def delete_product(id):
         return f"<h1>Error</h1><p>{str(e)}</p>"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
