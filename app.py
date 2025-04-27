@@ -553,7 +553,7 @@ def home():
             <nav class="navbar">
                 <div class="container navbar-container">
                     <div class="brand">
-                        <a href="/" class="logo">ASHAP</a>
+                        <a href="/" class="logo">ABENGSHOP</a>
                     </div>
                     
                     <ul class="nav-menu">
@@ -577,8 +577,8 @@ def home():
                     <div class="developer-info">
                         <span>Dibuat oleh: {{ developer_name }} ({{ developer_nrp }})</span>
                     </div>
-                    <h1>Selamat Datang di Toko ASHAP GANTENG PISAN</h1>
-                    <p>Produk ASHAP.</p>
+                    <h1>Selamat Datang di Ecommerce Seada ada nya</h1>
+                    <p>Produk Terbaru</p>
                 </div>
             </section>
             
@@ -624,7 +624,7 @@ def home():
             <!-- Features Section -->
             <section id="features" class="features">
                 <div class="container">
-                    <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;"><i class="fas fa-star"></i> Kenapa Belanja di ASHAP?</h2>
+                    <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;"><i class="fas fa-star"></i> Harus banget Beli di sini ?</h2>
                     
                     <div class="features-grid">
                         <div class="feature-card">
@@ -710,7 +710,7 @@ def home():
                     </div>
                     
                     <div class="footer-bottom">
-                        <p>&copy; {{ current_year }} Ashap | Dibuat oleh <span class="developer">{{ developer_name }} ({{ developer_nrp }})</span></p>
+                        <p>&copy; {{ current_year }} Abeng | Dibuat oleh <span class="developer">{{ developer_name }} ({{ developer_nrp }})</span></p>
                     </div>
                 </div>
             </footer>
@@ -944,7 +944,7 @@ def add_product_form():
         <!-- Navbar -->
         <nav class="navbar">
             <div class="container navbar-container">
-                <a href="/" class="logo">ASHAP</a>
+                <a href="/" class="logo">ABENGSHOP</a>
                 <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
             </div>
         </nav>
@@ -986,7 +986,7 @@ def add_product_form():
             </div>
             
             <div class="footer">
-                <p>&copy; {{ current_year }} ASHAP | Dibuat oleh <span class="developer">{{ developer_name }} ({{ developer_nrp }})</span></p>
+                <p>&copy; {{ current_year }} ABENG | Dibuat oleh <span class="developer">{{ developer_name }} ({{ developer_nrp }})</span></p>
             </div>
         </div>
     </body>
