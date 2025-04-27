@@ -27,11 +27,11 @@ jobs:
           sudo yum install -y git python3 -y
 
           # Remove repo lama
-          rm -rf ecommerce
+          rm -rf Ecommerce-CC
 
           # Clone repo terbaru
           git clone https://github.com/abellzs/Ecommerce-CC.git
-          cd ecommerce
+          cd Ecommerce-CC
 
           # Kill app.py lama
           sudo pkill -f app.py || true
@@ -39,4 +39,4 @@ jobs:
           # Jalanin app.py baru di background
           sudo nohup python3 app.py > output.log 2>&1 &
           EOF
-          echo "Deployment completed successfully!"
+            echo "Deployment completed successfully!"
