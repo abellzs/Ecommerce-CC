@@ -18,13 +18,25 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to ECS
+      - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.239.18.251 << 'EOF'
-            cd /var/www/html/Ecommerce-CC
-            sudo git pull origin main
-            # Restart Nginx or any other service if needed
-            sudo systemctl restart nginx
+          cd /home/ec2-user/Ecommerce
+          sudo yum update -y
+
+          sudo yum install -y git python3 -y
+
+          # Remove repo lama
+          rm -rf ecommerce
+
+          # Clone repo terbaru
+          git clone https://github.com/abellzs/Ecommerce-CC.git
+          cd ecommerce
+
+          # Kill app.py lama
+          sudo pkill -f app.py || true
+
+          # Jalanin app.py baru di background
+          sudo nohup python3 app.py > output.log 2>&1 &
           EOF
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          echo "Deployment completed successfully!"
