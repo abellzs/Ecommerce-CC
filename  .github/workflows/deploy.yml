@@ -3,7 +3,7 @@ name: Deploy to AWS EC2
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deployment on push to main branch
 
 jobs:
   deploy:
@@ -22,11 +22,19 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.239.18.251 << 'EOF'
             cd /home/ec2-user/Ecommerce-CC
-            sudo yum update -y
-            sudo yum install -y git python3 -y
-            rm -rf Ecommerce-CC
+           sudo yum update -y
+           sudo yum install -y git python3 -y
+
+           # Remove repo lama
+            sudo rm -rf Ecommerce-CC
+            # Clone repo terbaru
             git clone https://github.com/abellzs/Ecommerce-CC.git
             cd Ecommerce-CC
+
+            # Kill app.py lama
             sudo pkill -f app.py || true
+
+            # Jalanin app.py baru di background
             sudo nohup python3 app.py > output.log 2>&1 &
           EOF
+            echo "Deployment completed successfully!"
