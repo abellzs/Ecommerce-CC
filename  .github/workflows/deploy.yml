@@ -21,7 +21,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@13.239.18.251 << 'EOF'
-          cd /home/ec2-user/Ecommerce
+          cd /home/ec2-user/Ecommerce-CC
           sudo yum update -y
 
           sudo yum install -y git python3 -y
